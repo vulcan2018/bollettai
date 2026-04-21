@@ -1,65 +1,441 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useCallback } from "react";
+
+interface AnalysisResult {
+  fornitore?: string;
+  pod?: string;
+  potenza_impegnata?: string;
+  periodo_fatturazione?: string;
+  consumo_totale_kwh?: number;
+  consumo_f1?: number;
+  consumo_f2?: number;
+  consumo_f3?: number;
+  costo_energia?: number;
+  oneri_sistema?: number;
+  imposte?: number;
+  totale?: number;
+  valutazione?: "promossa" | "bocciata" | "sufficiente";
+  problemi?: string[];
+  suggerimenti?: string[];
+  risparmio_potenziale?: number;
+}
 
 export default function Home() {
+  const [file, setFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState<AnalysisResult | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleDrop = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    const droppedFile = e.dataTransfer.files[0];
+    if (droppedFile && (droppedFile.type === "application/pdf" || droppedFile.type.startsWith("image/"))) {
+      setFile(droppedFile);
+      setError(null);
+      setResult(null);
+      if (droppedFile.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = (e) => setPreview(e.target?.result as string);
+        reader.readAsDataURL(droppedFile);
+      } else {
+        setPreview(null);
+      }
+    }
+  }, []);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      setFile(selectedFile);
+      setError(null);
+      setResult(null);
+      if (selectedFile.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = (e) => setPreview(e.target?.result as string);
+        reader.readAsDataURL(selectedFile);
+      } else {
+        setPreview(null);
+      }
+    }
+  };
+
+  const handleAnalyze = async () => {
+    if (!file) return;
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const response = await fetch("/api/analyze", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Errore durante l'analisi. Riprova.");
+      }
+
+      const data = await response.json();
+      setResult(data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Errore sconosciuto");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getValutazioneColor = (val?: string) => {
+    switch (val) {
+      case "promossa": return "text-green-600 bg-green-50";
+      case "bocciata": return "text-red-600 bg-red-50";
+      case "sufficiente": return "text-yellow-600 bg-yellow-50";
+      default: return "text-gray-600 bg-gray-50";
+    }
+  };
+
+  const getValutazioneEmoji = (val?: string) => {
+    switch (val) {
+      case "promossa": return "✓";
+      case "bocciata": return "✗";
+      case "sufficiente": return "~";
+      default: return "?";
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen">
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-sm">B</span>
+            </div>
+            <span className="font-semibold text-xl text-gray-900">BollettAI</span>
+          </div>
+          <nav className="hidden sm:flex items-center gap-6 text-sm text-gray-600">
+            <a href="#come-funziona" className="hover:text-gray-900">Come funziona</a>
+            <a href="#prezzi" className="hover:text-gray-900">Prezzi</a>
+            <a href="#contatti" className="hover:text-gray-900">Contatti</a>
+          </nav>
+        </div>
+      </header>
+
+      {/* Hero */}
+      <main className="max-w-5xl mx-auto px-4 py-12">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+            Stai pagando troppo<br />per l&apos;energia?
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Carica la tua bolletta e l&apos;intelligenza artificiale ti dirà
+            se ci sono errori, costi nascosti o opportunità di risparmio.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Upload Area */}
+        <div className="max-w-2xl mx-auto">
+          <div
+            onDrop={handleDrop}
+            onDragOver={(e) => e.preventDefault()}
+            className={`
+              border-2 border-dashed rounded-xl p-8 text-center transition-colors
+              ${file ? "border-blue-300 bg-blue-50" : "border-gray-300 bg-white hover:border-blue-400"}
+            `}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            {!file ? (
+              <>
+                <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                  <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                  </svg>
+                </div>
+                <p className="text-lg font-medium text-gray-700 mb-2">
+                  Trascina qui la tua bolletta
+                </p>
+                <p className="text-sm text-gray-500 mb-4">
+                  oppure
+                </p>
+                <label className="inline-block">
+                  <input
+                    type="file"
+                    accept=".pdf,image/*"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                  <span className="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                    Scegli file
+                  </span>
+                </label>
+                <p className="text-xs text-gray-400 mt-4">
+                  PDF o immagine (JPG, PNG) - max 10MB
+                </p>
+              </>
+            ) : (
+              <div>
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div className="text-left">
+                    <p className="font-medium text-gray-900">{file.name}</p>
+                    <p className="text-sm text-gray-500">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+                  </div>
+                  <button
+                    onClick={() => { setFile(null); setPreview(null); setResult(null); }}
+                    className="ml-auto text-gray-400 hover:text-gray-600"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+                {preview && (
+                  <img src={preview} alt="Preview" className="max-h-48 mx-auto rounded-lg mb-4" />
+                )}
+                <button
+                  onClick={handleAnalyze}
+                  disabled={loading}
+                  className="w-full sm:w-auto px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {loading ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Analisi in corso...
+                    </span>
+                  ) : (
+                    "Analizza bolletta"
+                  )}
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Error */}
+          {error && (
+            <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">
+              {error}
+            </div>
+          )}
+
+          {/* Results */}
+          {result && (
+            <div className="mt-8 bg-white rounded-xl border border-gray-200 overflow-hidden">
+              {/* Valutazione Header */}
+              <div className={`p-6 ${getValutazioneColor(result.valutazione)}`}>
+                <div className="flex items-center gap-3">
+                  <span className="text-3xl font-bold">{getValutazioneEmoji(result.valutazione)}</span>
+                  <div>
+                    <h2 className="text-2xl font-bold capitalize">
+                      Bolletta {result.valutazione}
+                    </h2>
+                    {result.risparmio_potenziale && result.risparmio_potenziale > 0 && (
+                      <p className="text-sm opacity-80">
+                        Risparmio potenziale: fino a {result.risparmio_potenziale.toFixed(0)}€/anno
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* Details */}
+              <div className="p-6 space-y-6">
+                {/* Info Fornitore */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {result.fornitore && (
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">Fornitore</p>
+                      <p className="font-medium">{result.fornitore}</p>
+                    </div>
+                  )}
+                  {result.pod && (
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">POD</p>
+                      <p className="font-medium text-sm">{result.pod}</p>
+                    </div>
+                  )}
+                  {result.periodo_fatturazione && (
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">Periodo</p>
+                      <p className="font-medium">{result.periodo_fatturazione}</p>
+                    </div>
+                  )}
+                  {result.potenza_impegnata && (
+                    <div>
+                      <p className="text-xs text-gray-500 uppercase tracking-wide">Potenza</p>
+                      <p className="font-medium">{result.potenza_impegnata}</p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Consumi */}
+                {result.consumo_totale_kwh && (
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-3">Consumi</h3>
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                        <div>
+                          <p className="text-2xl font-bold text-gray-900">{result.consumo_totale_kwh}</p>
+                          <p className="text-xs text-gray-500">kWh totali</p>
+                        </div>
+                        {result.consumo_f1 !== undefined && (
+                          <div>
+                            <p className="text-lg font-semibold text-gray-700">{result.consumo_f1}</p>
+                            <p className="text-xs text-gray-500">F1 (punta)</p>
+                          </div>
+                        )}
+                        {result.consumo_f2 !== undefined && (
+                          <div>
+                            <p className="text-lg font-semibold text-gray-700">{result.consumo_f2}</p>
+                            <p className="text-xs text-gray-500">F2 (intermedia)</p>
+                          </div>
+                        )}
+                        {result.consumo_f3 !== undefined && (
+                          <div>
+                            <p className="text-lg font-semibold text-gray-700">{result.consumo_f3}</p>
+                            <p className="text-xs text-gray-500">F3 (fuori punta)</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Costi */}
+                {result.totale && (
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-3">Costi</h3>
+                    <div className="space-y-2">
+                      {result.costo_energia !== undefined && (
+                        <div className="flex justify-between py-2 border-b border-gray-100">
+                          <span className="text-gray-600">Costo energia</span>
+                          <span className="font-medium">{result.costo_energia.toFixed(2)}€</span>
+                        </div>
+                      )}
+                      {result.oneri_sistema !== undefined && (
+                        <div className="flex justify-between py-2 border-b border-gray-100">
+                          <span className="text-gray-600">Oneri di sistema</span>
+                          <span className="font-medium">{result.oneri_sistema.toFixed(2)}€</span>
+                        </div>
+                      )}
+                      {result.imposte !== undefined && (
+                        <div className="flex justify-between py-2 border-b border-gray-100">
+                          <span className="text-gray-600">Imposte</span>
+                          <span className="font-medium">{result.imposte.toFixed(2)}€</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between py-2 text-lg">
+                        <span className="font-semibold text-gray-900">Totale</span>
+                        <span className="font-bold text-gray-900">{result.totale.toFixed(2)}€</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Problemi */}
+                {result.problemi && result.problemi.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-3">Problemi rilevati</h3>
+                    <ul className="space-y-2">
+                      {result.problemi.map((p, i) => (
+                        <li key={i} className="flex gap-2 text-red-700 bg-red-50 p-3 rounded-lg">
+                          <span className="shrink-0">!</span>
+                          <span>{p}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Suggerimenti */}
+                {result.suggerimenti && result.suggerimenti.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-3">Suggerimenti</h3>
+                    <ul className="space-y-2">
+                      {result.suggerimenti.map((s, i) => (
+                        <li key={i} className="flex gap-2 text-blue-700 bg-blue-50 p-3 rounded-lg">
+                          <span className="shrink-0">i</span>
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* CTA */}
+                <div className="pt-4 border-t border-gray-200">
+                  <p className="text-center text-gray-600 mb-4">
+                    Vuoi un&apos;analisi approfondita con consulenza legale?
+                  </p>
+                  <div className="flex justify-center">
+                    <a
+                      href="#contatti"
+                      className="px-6 py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors"
+                    >
+                      Parla con un esperto
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
+
+        {/* How it works */}
+        <section id="come-funziona" className="mt-24">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Come funziona</h2>
+          <div className="grid sm:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-12 h-12 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-xl font-bold text-blue-600">1</span>
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Carica la bolletta</h3>
+              <p className="text-gray-600">PDF o foto della tua bolletta luce o gas aziendale</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-xl font-bold text-blue-600">2</span>
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Analisi AI</h3>
+              <p className="text-gray-600">L&apos;intelligenza artificiale legge e analizza ogni voce</p>
+            </div>
+            <div className="text-center">
+              <div className="w-12 h-12 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                <span className="text-xl font-bold text-blue-600">3</span>
+              </div>
+              <h3 className="font-semibold text-lg mb-2">Ricevi il report</h3>
+              <p className="text-gray-600">Scopri errori, anomalie e opportunità di risparmio</p>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="mt-24 bg-white border-t border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 py-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center">
+                <span className="text-white font-bold text-xs">B</span>
+              </div>
+              <span className="font-medium text-gray-900">BollettAI</span>
+            </div>
+            <p className="text-sm text-gray-500">
+              Un progetto Fira Software Ltd × Lucio Berardi
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
