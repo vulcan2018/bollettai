@@ -272,7 +272,7 @@ export default function Home() {
                 <p className="text-sm text-gray-500">Bollette analizzate</p>
               </div>
               <div className="text-center">
-                <p className="text-3xl font-bold text-gray-900">€180</p>
+                <p className="text-3xl font-bold text-gray-900">€420</p>
                 <p className="text-sm text-gray-500">Risparmio medio/anno</p>
               </div>
               <div className="text-center">
