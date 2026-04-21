@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
-
-const anthropic = new Anthropic();
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const SYSTEM_PROMPT = `Sei un esperto analista di bollette energetiche italiane. Analizza la bolletta fornita ed estrai le seguenti informazioni in formato JSON.
 
@@ -45,6 +44,61 @@ Suggerimenti utili:
 - Verifica eligibilità per Comunità Energetica (CER)
 - Confronto con altre offerte del mercato libero`;
 
+async function analyzeWithClaude(base64: string, mediaType: string): Promise<string> {
+  const anthropic = new Anthropic();
+
+  const response = await anthropic.messages.create({
+    model: "claude-sonnet-4-20250514",
+    max_tokens: 4096,
+    messages: [
+      {
+        role: "user",
+        content: [
+          {
+            type: mediaType === "application/pdf" ? "document" : "image",
+            source: {
+              type: "base64",
+              media_type: mediaType as "image/jpeg" | "image/png" | "image/gif" | "image/webp" | "application/pdf",
+              data: base64,
+            },
+          } as Anthropic.DocumentBlockParam | Anthropic.ImageBlockParam,
+          {
+            type: "text",
+            text: "Analizza questa bolletta energetica italiana e fornisci l'analisi in formato JSON come specificato.",
+          },
+        ],
+      },
+    ],
+    system: SYSTEM_PROMPT,
+  });
+
+  const textContent = response.content.find((c) => c.type === "text");
+  if (!textContent || textContent.type !== "text") {
+    throw new Error("Nessuna risposta testuale da Claude");
+  }
+  return textContent.text;
+}
+
+async function analyzeWithGemini(base64: string, mediaType: string): Promise<string> {
+  const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY!);
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+  const result = await model.generateContent([
+    {
+      inlineData: {
+        mimeType: mediaType,
+        data: base64,
+      },
+    },
+    {
+      text: `${SYSTEM_PROMPT}\n\nAnalizza questa bolletta energetica italiana e fornisci l'analisi in formato JSON come specificato.`,
+    },
+  ]);
+
+  const response = await result.response;
+  return response.text();
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -57,12 +111,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const useAnthropic = !!process.env.ANTHROPIC_API_KEY;
+    const useGoogle = !!process.env.GOOGLE_AI_API_KEY;
+
+    if (!useAnthropic && !useGoogle) {
+      return NextResponse.json(
+        { error: "Nessuna API key configurata (ANTHROPIC_API_KEY o GOOGLE_AI_API_KEY)" },
+        { status: 500 }
+      );
+    }
+
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
     const base64 = buffer.toString("base64");
 
-    let mediaType: "image/jpeg" | "image/png" | "image/gif" | "image/webp" | "application/pdf";
-
+    let mediaType: string;
     if (file.type === "application/pdf") {
       mediaType = "application/pdf";
     } else if (file.type === "image/png") {
@@ -75,43 +138,25 @@ export async function POST(request: NextRequest) {
       mediaType = "image/jpeg";
     }
 
-    const response = await anthropic.messages.create({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 4096,
-      messages: [
-        {
-          role: "user",
-          content: [
-            {
-              type: mediaType === "application/pdf" ? "document" : "image",
-              source: {
-                type: "base64",
-                media_type: mediaType,
-                data: base64,
-              },
-            } as Anthropic.DocumentBlockParam | Anthropic.ImageBlockParam,
-            {
-              type: "text",
-              text: "Analizza questa bolletta energetica italiana e fornisci l'analisi in formato JSON come specificato.",
-            },
-          ],
-        },
-      ],
-      system: SYSTEM_PROMPT,
-    });
+    let responseText: string;
+    let provider: string;
 
-    const textContent = response.content.find((c) => c.type === "text");
-    if (!textContent || textContent.type !== "text") {
-      throw new Error("Nessuna risposta testuale");
+    if (useAnthropic) {
+      provider = "claude";
+      responseText = await analyzeWithClaude(base64, mediaType);
+    } else {
+      provider = "gemini";
+      responseText = await analyzeWithGemini(base64, mediaType);
     }
 
-    let jsonText = textContent.text.trim();
+    let jsonText = responseText.trim();
     const jsonMatch = jsonText.match(/\{[\s\S]*\}/);
     if (jsonMatch) {
       jsonText = jsonMatch[0];
     }
 
     const analysis = JSON.parse(jsonText);
+    analysis._provider = provider;
 
     return NextResponse.json(analysis);
   } catch (error) {
