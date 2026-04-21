@@ -1,0 +1,61 @@
+export const siteConfig = {
+  name: 'BollettAI',
+  domain: 'bollettai.vercel.app',
+  description: 'Analisi intelligente delle bollette energia per PMI italiane',
+  supportEmail: 'firasoftwareltd@gmail.com',
+}
+
+export const PRICING = {
+  free: {
+    name: 'Gratuito',
+    price: 0,
+    priceLabel: '€0',
+    period: '',
+    features: [
+      '1 analisi bolletta al mese',
+      'Report base (promossa/bocciata)',
+      'Identificazione errori principali',
+    ],
+    cta: 'Inizia gratis',
+    popular: false,
+  },
+  base: {
+    name: 'Base',
+    price: 990,
+    priceLabel: '€9,90',
+    period: '/mese',
+    yearlyPrice: 9900,
+    yearlyLabel: '€99/anno',
+    features: [
+      'Bollette illimitate',
+      'Confronto offerte mercato',
+      'Alert rinnovi contratto',
+      'Analisi consumi F1/F2/F3',
+      'Calcolatore ROI fotovoltaico',
+      'Supporto email',
+    ],
+    cta: 'Abbonati',
+    popular: true,
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_BASE_PRICE_ID,
+  },
+  pro: {
+    name: 'Pro',
+    price: 2990,
+    priceLabel: '€29,90',
+    period: '/mese',
+    yearlyPrice: 29900,
+    yearlyLabel: '€299/anno',
+    features: [
+      'Tutto di Base, più:',
+      'Verifica eligibilità CER',
+      'Simulazione incentivi CER',
+      'Scanner Transizione 5.0',
+      'Analisi stagionale consumi',
+      'Report PDF esportabili',
+      'Supporto prioritario',
+    ],
+    cta: 'Abbonati Pro',
+    popular: false,
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRO_PRICE_ID,
+  },
+}

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { PRICING } from "@/lib/constants";
 
 interface AnalysisResult {
   fornitore?: string;
@@ -22,11 +24,13 @@ interface AnalysisResult {
 }
 
 export default function Home() {
+  const { user, loading: authLoading, signOut } = useAuth();
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [checkoutLoading, setCheckoutLoading] = useState<string | null>(null);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -89,6 +93,37 @@ export default function Home() {
     }
   };
 
+  const handleCheckout = async (planId: string) => {
+    if (!user) {
+      window.location.href = "/login";
+      return;
+    }
+
+    setCheckoutLoading(planId);
+    try {
+      const response = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          planId,
+          userId: user.id,
+          userEmail: user.email,
+        }),
+      });
+
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        throw new Error(data.error);
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Errore checkout");
+    } finally {
+      setCheckoutLoading(null);
+    }
+  };
+
   const getValutazioneColor = (val?: string) => {
     switch (val) {
       case "promossa": return "text-green-600 bg-green-50";
@@ -110,7 +145,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200">
+      <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -123,6 +158,28 @@ export default function Home() {
             <a href="#prezzi" className="hover:text-gray-900">Prezzi</a>
             <a href="#contatti" className="hover:text-gray-900">Contatti</a>
           </nav>
+          <div className="flex items-center gap-3">
+            {authLoading ? (
+              <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin" />
+            ) : user ? (
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-gray-600 hidden sm:block">{user.email}</span>
+                <button
+                  onClick={signOut}
+                  className="text-sm text-gray-600 hover:text-gray-900"
+                >
+                  Esci
+                </button>
+              </div>
+            ) : (
+              <a
+                href="/login"
+                className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+              >
+                Accedi
+              </a>
+            )}
+          </div>
         </div>
       </header>
 
@@ -418,6 +475,115 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Pricing */}
+        <section id="prezzi" className="mt-24">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">Piani e prezzi</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Scegli il piano più adatto alle esigenze della tua azienda. Inizia gratis, senza carta di credito.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Free */}
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{PRICING.free.name}</h3>
+              <div className="mb-4">
+                <span className="text-3xl font-bold">{PRICING.free.priceLabel}</span>
+              </div>
+              <ul className="space-y-3 mb-6">
+                {PRICING.free.features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-600">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={user ? "#" : "/login"}
+                className="block w-full py-3 text-center border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                {PRICING.free.cta}
+              </a>
+            </div>
+
+            {/* Base */}
+            <div className="bg-white rounded-xl border-2 border-blue-600 p-6 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full">
+                Più popolare
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{PRICING.base.name}</h3>
+              <div className="mb-4">
+                <span className="text-3xl font-bold">{PRICING.base.priceLabel}</span>
+                <span className="text-gray-500">{PRICING.base.period}</span>
+              </div>
+              <p className="text-sm text-gray-500 mb-4">oppure {PRICING.base.yearlyLabel} (-17%)</p>
+              <ul className="space-y-3 mb-6">
+                {PRICING.base.features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-600">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => handleCheckout("base_monthly")}
+                disabled={checkoutLoading === "base_monthly"}
+                className="block w-full py-3 text-center bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+              >
+                {checkoutLoading === "base_monthly" ? "Caricamento..." : PRICING.base.cta}
+              </button>
+            </div>
+
+            {/* Pro */}
+            <div className="bg-white rounded-xl border border-gray-200 p-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{PRICING.pro.name}</h3>
+              <div className="mb-4">
+                <span className="text-3xl font-bold">{PRICING.pro.priceLabel}</span>
+                <span className="text-gray-500">{PRICING.pro.period}</span>
+              </div>
+              <p className="text-sm text-gray-500 mb-4">oppure {PRICING.pro.yearlyLabel} (-17%)</p>
+              <ul className="space-y-3 mb-6">
+                {PRICING.pro.features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <svg className="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-gray-600">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <button
+                onClick={() => handleCheckout("pro_monthly")}
+                disabled={checkoutLoading === "pro_monthly"}
+                className="block w-full py-3 text-center border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50"
+              >
+                {checkoutLoading === "pro_monthly" ? "Caricamento..." : PRICING.pro.cta}
+              </button>
+            </div>
+          </div>
+
+          {/* Enterprise note */}
+          <p className="text-center text-gray-500 mt-8">
+            Hai esigenze particolari?{" "}
+            <a href="#contatti" className="text-blue-600 hover:underline">
+              Contattaci per un piano Enterprise
+            </a>
+          </p>
+        </section>
+
+        {/* Contact */}
+        <section id="contatti" className="mt-24">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">Contattaci</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Hai domande? Vuoi una consulenza personalizzata? Il nostro team è qui per aiutarti.
+          </p>
+
+          <ContactForm />
+        </section>
       </main>
 
       {/* Footer */}
@@ -437,5 +603,149 @@ export default function Home() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    type: "general",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Errore durante l'invio. Riprova.");
+      }
+
+      setSuccess(true);
+      setFormData({ name: "", email: "", company: "", type: "general", message: "" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Errore sconosciuto");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (success) {
+    return (
+      <div className="max-w-xl mx-auto bg-green-50 border border-green-200 rounded-xl p-8 text-center">
+        <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-bold text-green-800 mb-2">Messaggio inviato!</h3>
+        <p className="text-green-700">Ti risponderemo il prima possibile.</p>
+      </div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-white rounded-xl border border-gray-200 p-8">
+      <div className="grid sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+            Nome *
+          </label>
+          <input
+            id="name"
+            type="text"
+            required
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            Email *
+          </label>
+          <input
+            id="email"
+            type="email"
+            required
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+      </div>
+
+      <div className="grid sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+            Azienda
+          </label>
+          <input
+            id="company"
+            type="text"
+            value={formData.company}
+            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          />
+        </div>
+        <div>
+          <label htmlFor="type" className="block text-sm font-medium text-gray-700 mb-1">
+            Tipo richiesta
+          </label>
+          <select
+            id="type"
+            value={formData.type}
+            onChange={(e) => setFormData({ ...formData, type: e.target.value })}
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          >
+            <option value="general">Informazioni generali</option>
+            <option value="legal">Consulenza legale</option>
+            <option value="cer">Comunità Energetica (CER)</option>
+            <option value="enterprise">Piano Enterprise</option>
+          </select>
+        </div>
+      </div>
+
+      <div className="mb-6">
+        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+          Messaggio *
+        </label>
+        <textarea
+          id="message"
+          required
+          rows={4}
+          value={formData.message}
+          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+        />
+      </div>
+
+      {error && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
+          {error}
+        </div>
+      )}
+
+      <button
+        type="submit"
+        disabled={loading}
+        className="w-full py-3 bg-gray-900 text-white font-medium rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
+      >
+        {loading ? "Invio in corso..." : "Invia messaggio"}
+      </button>
+    </form>
   );
 }
