@@ -203,12 +203,12 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+          <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20">
               <BoltIcon className="w-5 h-5 text-white" />
             </div>
             <span className="font-bold text-xl text-gray-900">BollettAI</span>
-          </div>
+          </a>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
             <a href="#come-funziona" className="hover:text-blue-600 transition-colors">Come funziona</a>
             <a href="#privati" className="hover:text-blue-600 transition-colors">Per i Privati</a>
@@ -928,7 +928,7 @@ export default function Home() {
       <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
+            <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-700 rounded-xl flex items-center justify-center">
                 <BoltIcon className="w-5 h-5 text-white" />
               </div>
@@ -936,7 +936,7 @@ export default function Home() {
                 <span className="font-bold text-lg">BollettAI</span>
                 <p className="text-sm text-gray-400">Analisi intelligente delle bollette</p>
               </div>
-            </div>
+            </a>
 
             <div className="flex items-center gap-6 text-sm text-gray-400">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
