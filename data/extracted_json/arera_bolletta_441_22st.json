@@ -1,0 +1,94 @@
+{
+  "source_id": "arera_bolletta_441_22st",
+  "provider": "arera",
+  "utility_type": "dual",
+  "audience": "unknown",
+  "language": "it",
+  "document_kind": "guide",
+  "fields": {
+    "supplier_name": "ARERA",
+    "supplier_vat": "",
+    "customer_name": "finale degli Elementi di Dettaglio e comunicazione in merito",
+    "customer_company_name": "",
+    "customer_vat": "",
+    "customer_tax_code": "",
+    "invoice_number": "",
+    "issue_date": "",
+    "billing_period_start": "",
+    "billing_period_end": "",
+    "due_date": "",
+    "currency": "EUR",
+    "total_amount_due": null,
+    "pod": "",
+    "pdr": "",
+    "contract_account_id": "",
+    "tariff_name": "rie a copertura degli oneri generali di sistema",
+    "supply_voltage": "",
+    "committed_power_kw": null,
+    "available_power_kw": null,
+    "consumption_kwh": null,
+    "consumption_smc": null,
+    "reading_type": "",
+    "cost_energy_or_materia": null,
+    "cost_transport_meter": null,
+    "cost_system_charges": null,
+    "cost_taxes": null,
+    "vat_amount": null,
+    "payment_method": "",
+    "address_supply": "",
+    "address_billing": ""
+  },
+  "field_confidence": {
+    "supplier_name": {
+      "level": "medium",
+      "source": "source_manifest.provider_display"
+    },
+    "customer_name": {
+      "level": "medium",
+      "source": "Cliente"
+    },
+    "tariff_name": {
+      "level": "medium",
+      "source": "Tariffa"
+    }
+  },
+  "crosswalk_hits": {
+    "total_amount_due": [
+      "Importo complessivo"
+    ],
+    "cost_system_charges": [
+      "Oneri generali di sistema"
+    ],
+    "vat_amount": [
+      "IVA",
+      "Iva"
+    ],
+    "tariff_name": [
+      "Tariffa"
+    ],
+    "supply_voltage": [
+      "Tensione"
+    ]
+  },
+  "raw_text_excerpt": "SCHEDA TECNICA AGGIORNAMENTO DELLA REGOLAZIONE DELLA BOLLETTA 2.0: ULTERIORE MAGGIORE TRASPARENZA E SISTEMATIZZAZIONE DELLE COMUNICAZIONI DELL’AUTORITÀ. 441/2022/R/com(*) Con il documento di consultazione 441/2022/R/com, l’Autorità di Regolazione per Energia Reti e Ambiente (ARERA) illustra i propri orientamenti in ordine alla revisione della regolazione della “Bolletta 2.0” al fine di aumentare ulteriormente la trasparenza delle bollette dei clienti finali ed esaminare le misure volte alla razionalizzazione delle comunicazioni dell’Autorità. In particolare, l’intervento dell’Autorità è volto a: • esaminare la possibile revisione della regolazione della Bolletta 2.0 con l’obiettivo di incrementare la trasparenza degli importi fatturati, e in particolare, quelli relativi alle componenti tariffarie a copertura degli oneri generali di sistema, anche al fine di dare attuazione alle riforme abilitanti in materia di concorrenza previste dal Piano nazionale di ripresa e resilienza (PNRR); • fornire una ricognizione delle comunicazioni dell’Autorità illustrando pertanto una possibile disciplina per la sistematizzazione delle stesse. Inoltre, il documento illustra gli orientamenti per dare seguito alle ulteriori previsioni del d.lgs. 210 del 2021 di recepimento della Direttiva 2019/944/CE (non già affrontate nella deliberazione 209/2022/R/com). In particolare, il documento per la consultazione 441/2022/R/com (che si inquadra nell’ambito del procedimento avviato con deliberazi",
+  "raw_text_by_page": [
+    "SCHEDA TECNICA\n\n   AGGIORNAMENTO DELLA REGOLAZIONE DELLA BOLLETTA 2.0:\n   ULTERIORE MAGGIORE TRASPARENZA E SISTEMATIZZAZIONE\n           DELLE COMUNICAZIONI DELL’AUTORITÀ.\n                                                441/2022/R/com(*)\n\n\nCon il documento di consultazione 441/2022/R/com, l’Autorità di Regolazione per Energia Reti e Ambiente\n(ARERA) illustra i propri orientamenti in ordine alla revisione della regolazione della “Bolletta 2.0” al fine di\naumentare ulteriormente la trasparenza delle bollette dei clienti finali ed esaminare le misure volte alla\nrazionalizzazione delle comunicazioni dell’Autorità.\nIn particolare, l’intervento dell’Autorità è volto a:\n    • esaminare la possibile revisione della regolazione della Bolletta 2.0 con l’obiettivo di incrementare la\n        trasparenza degli importi fatturati, e in particolare, quelli relativi alle componenti tariffarie a copertura\n        degli oneri generali di sistema, anche al fine di dare attuazione alle riforme abilitanti in materia di\n        concorrenza previste dal Piano nazionale di ripresa e resilienza (PNRR);\n    • fornire una ricognizione delle comunicazioni dell’Autorità illustrando pertanto una possibile disciplina\n        per la sistematizzazione delle stesse.\nInoltre, il documento illustra gli orientamenti per dare seguito alle ulteriori previsioni del d.lgs. 210 del 2021\ndi recepimento della Direttiva 2019/944/CE (non già affrontate nella deliberazione 209/2022/R/com).\n\nIn particolare, il documento per la consultazione 441/2022/R/com (che si inquadra nell’ambito del\nprocedimento avviato con deliberazione 549/2020/R/com) illustra i seguenti orientamenti:\n\nDeroga in tema di recapitazione al cliente finale degli Elementi di Dettaglio e comunicazione in merito\nalla disponibilità della Guida alla lettura\n    • in ragione del contesto di grave crisi internazionale e della situazione congiunturale di tensione, a\n        livello nazionale ed europeo, dei mercati dell’energia, con conseguente incremento eccezionale anche\n        dei prezzi al dettaglio, è orientamento dell’ARERA prevedere che gli “Elementi di Dettaglio” siano\n        trasmessi a tutti i clienti finali per ciascun periodo di fatturazione, congiuntamente alla bolletta\n        sintetica, in deroga al criterio attualmente stabilito dalla regolazione “a richiesta”, ovvero secondo i\n        termini definiti contrattualmente;\n    • al fine di rendere edotto il cliente finale circa la messa a disposizione degli “Elementi di Dettaglio”,\n        nonché richiamare l’attenzione relativamente alla disponibilità della “Guida alla lettura”, quale\n        strumento sviluppato allo scopo di facilitare la comprensione degli importi fatturati nell’ambito del\n        proprio contratto di fornitura, l’ARERA è orientata a prevedere l’inserimento di una comunicazione\n        in una prima pagina separata della bolletta sintetica che dia evidenza della disponibilità degli “Elementi\n        di Dettaglio” e fornisca informazioni relative a come reperire la propria “Guida alla lettura”;\n    • la misura si applica a tutti i clienti finali dell’energia elettrica e del gas naturale a decorrere dalla prima\n        bolletta emessa successivamente dalla data di entrata in vigore della deliberazione che sarà adottata in\n        esito alla consultazione per un periodo temporale almeno pari a 6 mesi;\n    • con la medesima finalità di dare maggiore visibilità alla Guida alla lettura, è intenzione dell’Autorità\n        prevedere che all’interno degli “Elementi di Dettaglio” sia inserita stabilmente una comunicazione che\n        dia evidenza delle modalità per prendere visione della Guida alla lettura predisposta in relazione al\n        contratto di fornitura.\n\nUlteriore incremento della trasparenza delle bollette: accesso alle sottocomponenti tariffarie a\ncopertura degli Oneri generali di sistema\n   • È intenzione dell’ARERA introdurre l’obbligo di riportare negli “Elementi di Dettaglio” gli importi\n       fatturati relativi alle componenti tariffarie ASOS e ARIM a copertura degli oneri generali di sistema\n       in maniera disaggregata;\n\n                                                                                                                   1",
+    "•   l’ARERA è orientata a modificare la vigente regolazione sia per i regimi di tutela che per il mercato\n       libero con esclusivo riferimento al settore dell’energia elettrica. In particolare, l’orientamento è di\n       specificare che gli “Elementi di Dettaglio”, con riferimento agli importi fatturati a copertura degli oneri\n       generali di sistema, oltre a riportare l’indicazione dei prezzi unitari - che sono nel caso in esame le\n       aliquote - e delle quantità cui sono applicati relativamente all’importo complessivo, riportino anche la\n       disaggregazione di tali importi, suddivisi per le singole componenti tariffarie a copertura degli oneri\n       generali di sistema relativamente al settore dell'energia elettrica (ASOS e ARIM).\n   •   il venditore è tenuto a indicare il valore delle aliquote delle suddette componenti in coerenza con la\n       rispettiva struttura tariffaria definita per ciascuna delle tipologie di contratto ai sensi della\n       deliberazione 481/2017/R/com.\n   •   le revisioni di cui sopra si applicano a tutti i clienti finali a decorrere dalla prima bolletta emessa\n       successivamente dalla data del 1° aprile 2023.\n\nSistematizzazione delle comunicazioni dell’Autorità in bolletta, nonché delle ulteriori informazioni\ndisposte dalla regolazione e dalla normativa\n    • l’ARERA è orientata a integrare la regolazione, prevedendo per le bollette di tutti i clienti finali, un\n       apposito “spazio riservato alle comunicazioni dell’Autorità di Regolazione Energia Reti e Ambiente”\n       (di seguito “spazio riservato”) ricompreso all’interno dalla bolletta sintetica. Tale spazio svolge una\n       duplice funzione: da un lato è volto a distinguere le comunicazioni dell’ARERA, dalle comunicazioni\n       del venditore di natura prevalentemente commerciale, nonché dagli altri obblighi informativi posti in\n       capo al venditore e agli esercenti e, dall’altro lato garantisce una maggiore omogeneità e semplicità\n       nell’esposizione delle numerose informazioni e comunicazioni previste;\n    • lo “spazio riservato” dovrà garantire eguale risalto rispetto alle sezioni della bolletta contenenti altre\n       informazioni testuali.\n    • al fine di agevolare l’attività degli esercenti e dei venditori nell’includere comunicazioni sempre\n       aggiornate, utili e rilevanti in ciascuna bolletta per tutti i clienti finali, è intenzione dell’ARERA\n       prevedere sul proprio sito internet un’apposita pagina dedicata al registro proprie comunicazioni,\n       specificando in maniera chiara la platea di clienti alla quale sono destinate;\n    • l’ARERA è orientata a prevedere l’applicazione delle disposizioni descritte sopra entro 6 mesi\n       dall’entrata in vigore del provvedimento che sarà adottato in esito alla consultazione.\n\nI soggetti interessati sono invitati a far pervenire all’Autorità le proprie osservazioni entro il 14 ottobre 2022.\n\n                         (*) La scheda ha carattere divulgativo e non provvedimentale\n\n\n\n\n                                                                                                                 2"
+  ],
+  "page_count": 2,
+  "source_url": "https://www.arera.it/fileadmin/allegati/schede/441-22st.pdf",
+  "ocr_used_pages": [],
+  "validation": {
+    "total_consistency": "not_enough_data",
+    "delta": null
+  },
+  "provenance": {
+    "source_url": "https://www.arera.it/fileadmin/allegati/schede/441-22st.pdf",
+    "filename": "arera__dual__unknown__441-22st.pdf",
+    "sha256": "6b11229ca43a03608bd646711ef8e7cae5b4d8de7904442ff6e400d94bb3fec0",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:44.234322+00:00",
+    "document_kind": "guide",
+    "page_count": 2
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "arera_bolletta_315_allegato_a": {
+    "source_url": "https://www.arera.it/fileadmin/allegati/docs/24/315-2024-R-com-ALLEGATO_A.pdf",
+    "filename": "arera__dual__unknown__315-2024-allegato-a.pdf",
+    "sha256": "b62c0613c4bb13cd08166f3298d06c48a62cfb4e99fce85e891a5be0e7e8062c",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:37.009183+00:00",
+    "document_kind": "facsimile",
+    "page_count": 27
+  },
+  "arera_bolletta_315_new_allegato": {
+    "source_url": "https://www.arera.it/fileadmin/allegati/docs/24/Allegato_A_315-24_new.pdf",
+    "filename": "arera__dual__unknown__315-24-new.pdf",
+    "sha256": "5c9486020f7aed27fba0ae8bf56abef959f074a0814efa71c6838972d8ea72a4",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:38.541244+00:00",
+    "document_kind": "facsimile",
+    "page_count": 29
+  },
+  "arera_bolletta_315_delibera": {
+    "source_url": "https://www.arera.it/fileadmin/allegati/docs/24/315-2024-R-com.pdf",
+    "filename": "arera__dual__unknown__315-2024-delibera.pdf",
+    "sha256": "e5e6823c233cfc97f26c547c88b69debf81278e4a595cc27b105e9e3a511788b",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:39.533640+00:00",
+    "document_kind": "guide",
+    "page_count": 27
+  },
+  "arera_bolletta_315_testo_integrato": {
+    "source_url": "https://www.arera.it/fileadmin/allegati/docs/24/315-2024_ti.pdf",
+    "filename": "arera__dual__unknown__315-2024-ti.pdf",
+    "sha256": "348f80afa4e742085c85070a9c020ee0565f005278bca0a2b04df3f7e2f176ec",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:43.107337+00:00",
+    "document_kind": "guide",
+    "page_count": 27
+  },
+  "arera_bolletta_441_22st": {
+    "source_url": "https://www.arera.it/fileadmin/allegati/schede/441-22st.pdf",
+    "filename": "arera__dual__unknown__441-22st.pdf",
+    "sha256": "6b11229ca43a03608bd646711ef8e7cae5b4d8de7904442ff6e400d94bb3fec0",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:44.234322+00:00",
+    "document_kind": "guide",
+    "page_count": 2
+  },
+  "agenzia_entrate_consultazione_fe": {
+    "source_url": "https://telematici.agenziaentrate.gov.it/pdf/Guida-consultazione-FE-consumatori.pdf",
+    "filename": "agenzia-entrate__other__business__guida-consultazione-fe.pdf",
+    "sha256": "a255f44b93c8ccd071e41dbf8a308af55c0075b08673c7ebbc31e8482fdeebea",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:45.206727+00:00",
+    "document_kind": "invoice_example",
+    "page_count": 4
+  },
+  "enel_luce_casa_fix": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-casa/fix.pdf",
+    "filename": "enel__electricity__domestic__luce-casa-fix.pdf",
+    "sha256": "dc1e103a466b1eac5bb4a996ec5e0f33b95f568ebac05b8252eedc71f91bb7c2",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:47.911639+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_luce_casa_flex": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-casa/flex.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:26:50.495859+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "enel_luce_casa_fasce": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-casa/fasce.pdf",
+    "filename": "enel__electricity__domestic__luce-casa-fasce.pdf",
+    "sha256": "ed78fc65a38da766194863b3f0de9cecc6d4f7462899e542df9d04b65db1c1a0",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:13.251492+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_gas_casa_fix": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-gas-casa/fix.pdf",
+    "filename": "enel__gas__domestic__gas-casa-fix.pdf",
+    "sha256": "2cde2f46f5056c7841d410ac41383d659c200ef98f675d94996743d232facb76",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:36.675971+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_gas_casa_flex": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-gas-casa/flex.pdf",
+    "filename": "enel__gas__domestic__gas-casa-flex.pdf",
+    "sha256": "0416a0589a132f9fdd89b8910d1744f80c3e87d8fed5474cad5d2448c9a82008",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:38.916022+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_luce_business_fix": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-ufficio-negozio/fix.pdf",
+    "filename": "enel__electricity__business__luce-business-fix.pdf",
+    "sha256": "fb1ebbba63265e9d4ce0bcc2b9ff3c89e10f11fc1a1dcb257862f0db8d35d6fe",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:40.680430+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_luce_business_flex": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-ufficio-negozio/flex.pdf",
+    "filename": "enel__electricity__business__luce-business-flex.pdf",
+    "sha256": "26165c72f9752e04eb484e19100a686f7cb00c257fabf92b916047e317ad01a3",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:42.243571+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_luce_business_fasce": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-ufficio-negozio/fasce.pdf",
+    "filename": "enel__electricity__business__luce-business-fasce.pdf",
+    "sha256": "a0c2812b9418fc7de7aa85198379c7054a073a9f86d73a975013e24c83c2bbe3",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:43.352781+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_gas_business_fix": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-gas-ufficio-negozio/fix.pdf",
+    "filename": "enel__gas__business__gas-business-fix.pdf",
+    "sha256": "01f5b83f43887cfcf13301942340c325d5cade2f7de3ea10593b0567e514892b",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:44.825227+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_gas_business_flex": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-gas-ufficio-negozio/flex.pdf",
+    "filename": "enel__gas__business__gas-business-flex.pdf",
+    "sha256": "3173178d3f8d6113c1e18cc6db1d5732aef8162c4bb957df7853b52ab073b34c",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:45.988038+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "enel_glossario_electricity": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/tutto-sulla-bolletta/glossario-fornitura-energia-elettrica.pdf",
+    "filename": "enel__electricity__unknown__glossario-electricity.pdf",
+    "sha256": "e68306501a5ac3d8d17c70f8e1aabe692a457350c4948920d4d77b9fff62ad67",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:48.246320+00:00",
+    "document_kind": "guide",
+    "page_count": 13
+  },
+  "enel_glossario_gas": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/tutto-sulla-bolletta/glossario-fornitura-gas-naturale.pdf",
+    "filename": "enel__gas__unknown__glossario-gas.pdf",
+    "sha256": "9c3afe6a69d0963e7e5d082564d1109d49fecbb0525745548bd366d8df258663",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:52.521347+00:00",
+    "document_kind": "guide",
+    "page_count": 12
+  },
+  "acea_au_ee_fisso_02": {
+    "source_url": "https://www.acea.it/content/dam/acea-energia/glossario/AU/EE/Fisso_02.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:55.709288+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_ee_fisso_09": {
+    "source_url": "https://www.acea.it/content/dam/acea-energia/glossario/AU/EE/Fisso_09.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:55.898187+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_ee_fisso_19": {
+    "source_url": "https://www.acea.it/content/dam/acea-energia/glossario/AU/EE/Fisso_19.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:56.067410+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_ee_fisso_23": {
+    "source_url": "https://www.acea.it/content/dam/acea-energia/glossario/AU/EE/Fisso_23.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:56.257911+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_ee_fisso_30": {
+    "source_url": "https://www.acea.it/content/dam/acea-energia/glossario/AU/EE/Fisso_30.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:56.493208+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_gas_fisso_01": {
+    "source_url": "https://www.acea.it/dam/acea-energia/glossario/AU/Gas/Fisso_01.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:56.691673+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_gas_fisso_02": {
+    "source_url": "https://www.acea.it/dam/acea-energia/glossario/AU/Gas/Fisso_02.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:57.462954+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_gas_fisso_09": {
+    "source_url": "https://www.acea.it/dam/acea-energia/glossario/AU/Gas/Fisso_09.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:58.418764+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_gas_fisso_24": {
+    "source_url": "https://www.acea.it/dam/acea-energia/glossario/AU/Gas/Fisso_24.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:27:59.118237+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "acea_au_gas_fisso_27": {
+    "source_url": "https://www.acea.it/dam/acea-energia/glossario/AU/Gas/Fisso_27.pdf",
+    "filename": null,
+    "sha256": null,
+    "status": "failed",
+    "downloaded_at": "2026-04-22T11:28:00.386354+00:00",
+    "document_kind": "sample_bill",
+    "page_count": null
+  },
+  "engie_guida_bolletta": {
+    "source_url": "https://d3evrc0h48esvv.cloudfront.net/documents/8116594/8393170/v.4.0+Guida+alla+bolletta.pdf/a0720de5-41dd-f67c-d09d-728e9339bdf4?t=1752491025498",
+    "filename": "engie__dual__domestic__guida-bolletta.pdf",
+    "sha256": "f0dfd870dec54c9508b1915ad88651d4cffb6780533d3a8283f8650ba5c1d8f4",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:28:01.098569+00:00",
+    "document_kind": "guide",
+    "page_count": 15
+  },
+  "engie_glossario_electricity_fixed": {
+    "source_url": "https://d3evrc0h48esvv.cloudfront.net/documents/8116594/0/v.1.0+Energia+P-fisso_Glossario+della+bolletta+%281%29.pdf/73d17394-bca7-bc7a-f75a-5357b726b69f?t=1774440128641",
+    "filename": "engie__electricity__domestic__glossario-electricity-fixed.pdf",
+    "sha256": "068ae4a5c1dfe1d688bf74b4f8d4bb15344a702b8b276182b9673579338b8be4",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:28:25.435236+00:00",
+    "document_kind": "guide",
+    "page_count": 27
+  },
+  "engie_glossario_electricity_indexed": {
+    "source_url": "https://d3evrc0h48esvv.cloudfront.net/documents/8116594/0/v.1.0+Energia+P-Indicizzato_Glossario+della+bolletta.pdf/98be952c-7018-614a-b54a-f1c073d8e69b?t=1774440141323",
+    "filename": "engie__electricity__domestic__glossario-electricity-indexed.pdf",
+    "sha256": "3c70052f19d1db660b34385bb73e9c1542025b3dbc9d2ab934dc6033fa912159",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:28:32.677213+00:00",
+    "document_kind": "guide",
+    "page_count": 28
+  },
+  "engie_glossario_gas_fixed": {
+    "source_url": "https://d3evrc0h48esvv.cloudfront.net/documents/8116594/0/v.1.0+Gas-P-Fisso_Glossario+della+bolletta.pdf/60e00d18-246d-8d69-76d4-516ba3fd5ac9?t=1774440092574",
+    "filename": "engie__gas__domestic__glossario-gas-fixed.pdf",
+    "sha256": "5a495625711367bb6929910bde2aee856967c4618553231c985187a865dbc2cf",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:28:43.330956+00:00",
+    "document_kind": "guide",
+    "page_count": 23
+  },
+  "engie_glossario_gas_indexed": {
+    "source_url": "https://d3evrc0h48esvv.cloudfront.net/documents/8116594/0/v.3.0+Gas-P-Indicizzato_Glossario+della+bolletta.pdf/567a783e-f2f8-d26d-5337-c6a7f54a0cab?t=1774440071440",
+    "filename": "engie__gas__domestic__glossario-gas-indexed.pdf",
+    "sha256": "ef24cf318066eb637e735c9c3dd77aedf10339c5b8963f5d2d45f15562a3b9c8",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:02.401852+00:00",
+    "document_kind": "guide",
+    "page_count": 24
+  },
+  "enel_gas_casa_speciale_30": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-gas-casa/speciale-gas-30.pdf",
+    "filename": "enel__gas__domestic__gas-casa-speciale-30.pdf",
+    "sha256": "9a324fc4461a9b5ed1863e4257266e52b7d73db13eeb245fb016c5783f9ee35d",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:07.823299+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 2
+  },
+  "enel_luce_casa_speciale_30": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-casa/speciale-luce-30.pdf",
+    "filename": "enel__electricity__domestic__luce-casa-speciale-30.pdf",
+    "sha256": "0a5ae898dbd8119be3e8d149a3573bdd942409e1d0f1dfce76b6f835c5d163d5",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:10.762479+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 2
+  },
+  "enel_luce_business_open_energy_mono": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-ufficio-negozio/Open_Energy_Mono.pdf",
+    "filename": "enel__electricity__business__luce-business-open-energy-mono.pdf",
+    "sha256": "65975abcab06d4434e7af9b91f6b15d0248a070c5cab4db7bc91b1501695b2d6",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:15.053276+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 2
+  },
+  "iren_guida_luce": {
+    "source_url": "https://www.irenlucegas.it/content/dam/iren/assistenza/assistenza-clienti/bolletta/guida_alla_lettura_della_bolletta_luce/documenti/Guida_IME_Luce_v3.pdf",
+    "filename": "iren__electricity__domestic__guida-luce.pdf",
+    "sha256": "267ef5c136da0a0e020345dd272caa8b94326507ca86486576fd5069808cf502",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:17.510566+00:00",
+    "document_kind": "guide",
+    "page_count": 4
+  },
+  "iren_guida_gas": {
+    "source_url": "https://www.irenlucegas.it/content/dam/iren/assistenza/assistenza-clienti/bolletta/guida_alla_lettura_della_bolletta_gas/documenti/Guida_IME_Gas_v3.pdf",
+    "filename": "iren__gas__domestic__guida-gas.pdf",
+    "sha256": "c781218699804b64808f0533b8f617537537b3da6b4e254a80ca2309929da5f1",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:24.480018+00:00",
+    "document_kind": "guide",
+    "page_count": 4
+  },
+  "a2a_glossario_electricity": {
+    "source_url": "https://www.a2a.it/casa/sites/default/files/NoIndex/documenti/assistenza/glossario/Glossario-ENERGIA-ELETTRICA.pdf",
+    "filename": "a2a__electricity__unknown__glossario-electricity.pdf",
+    "sha256": "b0326f9fe11fef856ea39c71fe3283d3e50b1b0ad6cde3ddde1dfd9a8f85609a",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:29.233704+00:00",
+    "document_kind": "guide",
+    "page_count": 12
+  },
+  "a2a_glossario_gas": {
+    "source_url": "https://www.a2a.it/casa/sites/default/files/NoIndex/documenti/assistenza/glossario/Glossario-GAS-NATURALE.pdf",
+    "filename": "a2a__gas__unknown__glossario-gas.pdf",
+    "sha256": "764e5da9164624ca97baa8181a1792824041d2dbafe1dc3a880b1720849248ca",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:30.895220+00:00",
+    "document_kind": "guide",
+    "page_count": 11
+  },
+  "a2a_guida_ee_business_tutela": {
+    "source_url": "https://maggiortutela.a2a.it/sites/default/files/NoIndex/maggiortutela/supporto/documenti/contratti/GuidaBolletta/A2A_Guida-EE_business_tutela.pdf",
+    "filename": "a2a__electricity__business__guida-ee-business-tutela.pdf",
+    "sha256": "fb28a6383b79b114d67135fee8d102399a9e2987adfd2729e51d3c625147d2c9",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:31.672728+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 3
+  },
+  "a2a_guida_ee_tutela": {
+    "source_url": "https://maggiortutela.a2a.it/sites/default/files/NoIndex/maggiortutela/supporto/documenti/contratti/GuidaBolletta/A2A_Guida-EE_tutela.pdf",
+    "filename": "a2a__electricity__domestic__guida-ee-tutela.pdf",
+    "sha256": "1704b9f3720acb4981c2b86c943cdc5a14a3f3242d935369cabfedf44db1cc05",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:33.294119+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 3
+  },
+  "sorgenia_bus_luce_placet_var": {
+    "source_url": "https://guidafattura.sorgenia.it/pdf/bus-luce/Placet%20-%20STD%20VAR%20-%20Luce.pdf",
+    "filename": "sorgenia__electricity__business__bus-luce-placet-var.pdf",
+    "sha256": "1fb1fb7ed1a97cbea0cfe2210acdcc881755d9cf4d15e70ba005302e014c1581",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:35.109755+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "sorgenia_bus_luce_placet_fix": {
+    "source_url": "https://guidafattura.sorgenia.it/pdf/bus-luce/Placet%20-%20STD%20FIX%20-%20Luce.pdf",
+    "filename": "sorgenia__electricity__business__bus-luce-placet-fix.pdf",
+    "sha256": "7eef2aedfd5618eaffe7a90c794d4f1b1e522c7f29b2268b31e4fd6d6385f969",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:36.113283+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "sorgenia_bus_gas_placet_fix": {
+    "source_url": "https://guidafattura.sorgenia.it/pdf/bus-gas/Placet%20-%20STD%20FIX%20-%20Gas.pdf",
+    "filename": "sorgenia__gas__business__bus-gas-placet-fix.pdf",
+    "sha256": "4fa95fcfd9f0e0345a9aa818aeab5861e339b2aa73c0a36d681e75a501779852",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:36.949484+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  },
+  "sorgenia_next_energy_business": {
+    "source_url": "https://guidafattura.sorgenia.it/files/1315/3840/8568/Next_Energy_Business.pdf",
+    "filename": "sorgenia__electricity__business__next-energy-business.pdf",
+    "sha256": "9b76f57296e03661129bcd26dae0ed568dcbcfcaaf1653f3211244f996cded92",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:37.726010+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 4
+  },
+  "sorgenia_fisso_365_ele_bus": {
+    "source_url": "https://guidafattura.sorgenia.it/files/3915/8564/7324/Fisso_365_ELE_BUS.pdf",
+    "filename": "sorgenia__electricity__business__fisso-365-ele-bus.pdf",
+    "sha256": "227c92368e7cdca53e499b924a1ff4467185ec9e2c450d8391f649a1f1f6ece8",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:29:38.614151+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 3
+  }
+}

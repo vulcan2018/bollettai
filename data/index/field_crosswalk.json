@@ -1,0 +1,121 @@
+{
+  "canonical_fields": [
+    "supplier_name",
+    "supplier_vat",
+    "customer_name",
+    "customer_company_name",
+    "customer_vat",
+    "customer_tax_code",
+    "invoice_number",
+    "issue_date",
+    "billing_period_start",
+    "billing_period_end",
+    "due_date",
+    "currency",
+    "total_amount_due",
+    "pod",
+    "pdr",
+    "contract_account_id",
+    "tariff_name",
+    "supply_voltage",
+    "committed_power_kw",
+    "available_power_kw",
+    "consumption_kwh",
+    "consumption_smc",
+    "reading_type",
+    "cost_energy_or_materia",
+    "cost_transport_meter",
+    "cost_system_charges",
+    "cost_taxes",
+    "vat_amount",
+    "payment_method",
+    "address_supply",
+    "address_billing"
+  ],
+  "crosswalk": {
+    "total_amount_due": [
+      "Totale da pagare",
+      "Importo complessivo",
+      "Importo da pagare",
+      "Totale fattura",
+      "Totale bolletta",
+      "Totale documento"
+    ],
+    "cost_energy_or_materia": [
+      "Spesa per la materia energia",
+      "Spesa materia energia",
+      "Spesa per la vendita di energia elettrica",
+      "Spesa per la vendita di gas naturale",
+      "Spesa per la materia gas naturale",
+      "Materia prima gas"
+    ],
+    "cost_transport_meter": [
+      "Spesa per il trasporto e la gestione del contatore",
+      "Trasporto e gestione contatore",
+      "Spesa per il trasporto, gestione contatore e oneri di sistema",
+      "Trasporto, gestione contatore"
+    ],
+    "cost_system_charges": [
+      "Oneri di sistema",
+      "Spesa per oneri di sistema",
+      "Costi di sistema",
+      "Oneri generali di sistema"
+    ],
+    "cost_taxes": [
+      "Imposte",
+      "Accisa",
+      "Accise",
+      "Addizionale regionale",
+      "Totale imposte"
+    ],
+    "vat_amount": [
+      "IVA",
+      "Iva",
+      "Importo IVA",
+      "Totale IVA"
+    ],
+    "invoice_number": [
+      "Numero fattura",
+      "N. fattura",
+      "Fattura n.",
+      "Numero documento"
+    ],
+    "issue_date": [
+      "Data emissione",
+      "Data fattura",
+      "Data documento",
+      "Emessa il"
+    ],
+    "due_date": [
+      "Scadenza",
+      "Data di scadenza",
+      "Scade il"
+    ],
+    "contract_account_id": [
+      "Numero cliente",
+      "Codice cliente",
+      "Numero fornitura",
+      "Codice contratto",
+      "Numero contratto",
+      "Codice utente"
+    ],
+    "tariff_name": [
+      "Offerta",
+      "Nome offerta",
+      "Tariffa",
+      "Tipologia offerta"
+    ],
+    "supply_voltage": [
+      "Tensione di fornitura",
+      "Tensione"
+    ],
+    "committed_power_kw": [
+      "Potenza impegnata",
+      "Potenza contrattualmente impegnata"
+    ],
+    "available_power_kw": [
+      "Potenza disponibile",
+      "Potenza resa disponibile"
+    ]
+  }
+}

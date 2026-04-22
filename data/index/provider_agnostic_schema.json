@@ -1,0 +1,289 @@
+{
+  "type": "object",
+  "description": "Provider-agnostic normalized Italian utility bill schema used by the extractor and synthetic generator.",
+  "required": [
+    "source_id",
+    "provider",
+    "utility_type",
+    "audience",
+    "language",
+    "document_kind",
+    "fields",
+    "source_url"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "utility_type": {
+      "type": "string",
+      "enum": [
+        "electricity",
+        "gas",
+        "dual",
+        "other"
+      ]
+    },
+    "audience": {
+      "type": "string",
+      "enum": [
+        "domestic",
+        "business",
+        "non_domestic",
+        "unknown"
+      ]
+    },
+    "language": {
+      "type": "string"
+    },
+    "document_kind": {
+      "type": "string"
+    },
+    "fields": {
+      "type": "object",
+      "properties": {
+        "supplier_name": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "supplier_vat": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "customer_name": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "customer_company_name": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "customer_vat": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "customer_tax_code": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "invoice_number": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "issue_date": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "billing_period_start": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "billing_period_end": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "due_date": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "currency": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "total_amount_due": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "pod": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "pdr": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "contract_account_id": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "tariff_name": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "supply_voltage": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "committed_power_kw": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "available_power_kw": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "consumption_kwh": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "consumption_smc": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "reading_type": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "cost_energy_or_materia": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "cost_transport_meter": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "cost_system_charges": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "cost_taxes": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "vat_amount": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "payment_method": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "address_supply": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "address_billing": {
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "field_confidence": {
+      "type": "object"
+    },
+    "crosswalk_hits": {
+      "type": "object"
+    },
+    "raw_text_excerpt": {
+      "type": "string"
+    },
+    "raw_text_by_page": {
+      "type": "array"
+    },
+    "page_count": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "source_url": {
+      "type": "string"
+    }
+  }
+}

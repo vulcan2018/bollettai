@@ -1,0 +1,80 @@
+{
+  "source_id": "agenzia_entrate_consultazione_fe",
+  "provider": "agenzia_entrate",
+  "utility_type": "other",
+  "audience": "business",
+  "language": "it",
+  "document_kind": "invoice_example",
+  "fields": {
+    "supplier_name": "Agenzia delle Entrate",
+    "supplier_vat": "",
+    "customer_name": "una copia di carta della fattura stessa. Al fine di poter co",
+    "customer_company_name": "",
+    "customer_vat": "",
+    "customer_tax_code": "",
+    "invoice_number": "",
+    "issue_date": "",
+    "billing_period_start": "",
+    "billing_period_end": "",
+    "due_date": "",
+    "currency": "EUR",
+    "total_amount_due": null,
+    "pod": "",
+    "pdr": "",
+    "contract_account_id": "",
+    "tariff_name": "",
+    "supply_voltage": "",
+    "committed_power_kw": null,
+    "available_power_kw": null,
+    "consumption_kwh": null,
+    "consumption_smc": null,
+    "reading_type": "",
+    "cost_energy_or_materia": null,
+    "cost_transport_meter": null,
+    "cost_system_charges": null,
+    "cost_taxes": null,
+    "vat_amount": null,
+    "payment_method": "",
+    "address_supply": "",
+    "address_billing": ""
+  },
+  "field_confidence": {
+    "supplier_name": {
+      "level": "medium",
+      "source": "source_manifest.provider_display"
+    },
+    "customer_name": {
+      "level": "medium",
+      "source": "Cliente"
+    }
+  },
+  "crosswalk_hits": {
+    "vat_amount": [
+      "IVA",
+      "Iva"
+    ]
+  },
+  "raw_text_excerpt": "Guida alla consultazione delle fatture elettroniche ricevute (dai consumatori finali) Tutti gli operatori IVA che effettuano una cessione di beni o una prestazione di servizi nei confronti di un consumatore finale (cioè che non effettua l’acquisto in qualità di imprenditore o professionista e quindi comunica al fornitore solo il suo codice fiscale) sono obbligati ad inviare al Sistema di Interscambio gestito dall’Agenzia delle Entrate la fattura elettronica riferita a tali operazioni, anche nel caso in cui abbiano rilasciato al cliente una copia di carta della fattura stessa. Al fine di poter consultare le fatture elettroniche ricevute, l’utente (consumatore finale) può accedere alla sua area riservata dei servizi telematici presente nel sito dell’Agenzia delle Entrate e seguire il percorso sotto descritto. 1) Accesso all’area riservata mediante le credenziali Fisconline/Entratel/SPID/CNS 2) Una volta all’interno della “Mia scrivania”, se si vogliono consultare le fatture ricevute come consumatore finale, cliccare sull’icona “Fatture e Corrispettivi” e, successivamente, selezionare il pulsante “accedi” presente nel riquadro a sinistra “Le tue fatture”. Il riquadro a destra della pagina, “Fatture e Corrispettivi”, è destinato ai soggetti titolari di partita IVA che vogliono consultare le proprie fatture emesse e ricevute in qualità di impresa o professionista (selezionando sul pulsante “accedi” di questo riquadro, l’utente raggiungerà il servizio “Fatture e Corrispettivi”). 3) In caso di primo accesso sarà necessario effettuare, preventivamente, l’",
+  "raw_text_by_page": [
+    "Guida alla consultazione delle fatture elettroniche ricevute (dai consumatori finali)\n\nTutti gli operatori IVA che effettuano una cessione di beni o una prestazione di servizi nei confronti di un\nconsumatore finale (cioè che non effettua l’acquisto in qualità di imprenditore o professionista e quindi\ncomunica al fornitore solo il suo codice fiscale) sono obbligati ad inviare al Sistema di Interscambio gestito\ndall’Agenzia delle Entrate la fattura elettronica riferita a tali operazioni, anche nel caso in cui abbiano\nrilasciato al cliente una copia di carta della fattura stessa.\n\nAl fine di poter consultare le fatture elettroniche ricevute, l’utente (consumatore finale) può accedere alla\nsua area riservata dei servizi telematici presente nel sito dell’Agenzia delle Entrate e seguire il percorso\nsotto descritto.\n\n    1) Accesso all’area riservata mediante le credenziali Fisconline/Entratel/SPID/CNS",
+    "2) Una volta all’interno della “Mia scrivania”, se si vogliono consultare le fatture ricevute come\n   consumatore finale, cliccare sull’icona “Fatture e Corrispettivi” e, successivamente, selezionare il\n   pulsante “accedi” presente nel riquadro a sinistra “Le tue fatture”.\n   Il riquadro a destra della pagina, “Fatture e Corrispettivi”, è destinato ai soggetti titolari di partita\n   IVA che vogliono consultare le proprie fatture emesse e ricevute in qualità di impresa o\n   professionista (selezionando sul pulsante “accedi” di questo riquadro, l’utente raggiungerà il\n   servizio “Fatture e Corrispettivi”).",
+    "3) In caso di primo accesso sarà necessario effettuare, preventivamente, l’adesione alla consultazione\n   delle proprie fatture ricevute (servizio realizzato per ottemperare alle disposizioni del Regolamento\n   679/2016/UE come prescritto dal Garante della Privacy). Tutte le fatture ricevute potranno essere\n   consultate dal giorno successivo a quello in cui è resa disponibile l’attestazione di adesione al\n   servizio, cliccando sul link “Le tue fatture ricevute”.\n\n\n\n\n4) Una volta entrati sulla pagina di consultazione è possibile effettuare una ricerca per data di\n   emissione della fattura (la data riportata nella fattura) impostando un intervallo temporale\n   massimo di 3 mesi. La tabella riepilogativa espone, per ogni riga, i dati di sintesi della fattura; per\n   poter visualizzare ed effettuare il download dell’intera fattura è possibile cliccare sull’icona\n   presente nell’ultima colonna",
+    "5) L’utente può sempre effettuare il recesso dal servizio di consultazione e acquisizione delle fatture\n   elettroniche o dei loro duplicati informatici mediante la medesima funzionalità resa disponibile\n   nella stessa area riservata del sito web dell’Agenzia; il recesso è efficace dal giorno successivo a\n   quello in cui è resa disponibile l’attestazione di avvenuto recesso dal servizio e comporta\n   l’interruzione del servizio di consultazione di tutte le fatture ricevute, comprese quelle ricevute nel\n   periodo in cui vigeva l’adesione. L’utente può comunque in qualsiasi successivo momento\n   richiedere una nuova adesione con le stesse modalità descritte al punto 3), che avrà efficacia dal\n   giorno successivo a quello in cui è resa disponibile l’attestazione di avvenuta adesione per tutte le\n   fatture pervenute dalla data dell’attestazione."
+  ],
+  "page_count": 4,
+  "source_url": "https://telematici.agenziaentrate.gov.it/pdf/Guida-consultazione-FE-consumatori.pdf",
+  "ocr_used_pages": [],
+  "validation": {
+    "total_consistency": "not_enough_data",
+    "delta": null
+  },
+  "provenance": {
+    "source_url": "https://telematici.agenziaentrate.gov.it/pdf/Guida-consultazione-FE-consumatori.pdf",
+    "filename": "agenzia-entrate__other__business__guida-consultazione-fe.pdf",
+    "sha256": "a255f44b93c8ccd071e41dbf8a308af55c0075b08673c7ebbc31e8482fdeebea",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:26:45.206727+00:00",
+    "document_kind": "invoice_example",
+    "page_count": 4
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "source_id": "enel_luce_casa_fasce",
+  "provider": "enel",
+  "utility_type": "electricity",
+  "audience": "domestic",
+  "language": "it",
+  "document_kind": "sample_bill",
+  "fields": {
+    "supplier_name": "Enel Energia",
+    "supplier_vat": "",
+    "customer_name": "la Residenziale",
+    "customer_company_name": "",
+    "customer_vat": "",
+    "customer_tax_code": "",
+    "invoice_number": "",
+    "issue_date": "",
+    "billing_period_start": "",
+    "billing_period_end": "",
+    "due_date": "",
+    "currency": "EUR",
+    "total_amount_due": null,
+    "pod": "",
+    "pdr": "",
+    "contract_account_id": "",
+    "tariff_name": "E DEGLI ELEMENTI ESSENZIALI SPESA PER IL SERVIZIO DI Quo",
+    "supply_voltage": "",
+    "committed_power_kw": null,
+    "available_power_kw": null,
+    "consumption_kwh": null,
+    "consumption_smc": null,
+    "reading_type": "",
+    "cost_energy_or_materia": null,
+    "cost_transport_meter": null,
+    "cost_system_charges": null,
+    "cost_taxes": null,
+    "vat_amount": null,
+    "payment_method": "",
+    "address_supply": "",
+    "address_billing": ""
+  },
+  "field_confidence": {
+    "supplier_name": {
+      "level": "medium",
+      "source": "source_manifest.provider_display"
+    },
+    "customer_name": {
+      "level": "medium",
+      "source": "Cliente"
+    },
+    "tariff_name": {
+      "level": "medium",
+      "source": "Offerta"
+    }
+  },
+  "crosswalk_hits": {
+    "vat_amount": [
+      "IVA",
+      "Iva"
+    ],
+    "tariff_name": [
+      "Offerta"
+    ]
+  },
+  "raw_text_excerpt": "INTERNAL Segmento: Clientela Residenziale Enel Energia per il Commodity: Ele mercato libero DETTAGLIO DEI CORRISPETTIVI ALL’INTERNO DEL BOX OFFERTA E DEGLI ELEMENTI ESSENZIALI SPESA PER IL SERVIZIO DI Quota Consumi VENDITA DELL’ENERGIA Prezzo della componente energia (comprensivo delle perdite di rete), espresso in €/kWh pari al \"PUN Index GME\" indice di riferimento del mercato A elettrico italiano: è il prezzo di riferimento dell'energia elettrica scambiata sul mercato all'ingrosso dell'energia (MGP - Mercato del Giorno Prima), calcolato dal GME, differenziato su fasce orarie. Il corrispettivo di dispacciamento è una componente della bolletta elettrica che copre i costi sostenuti per garantire la sicurezza e la continuità del B servizio elettrico. Questi costi sono legati alla gestione della rete elettrica, in particolare al bilanciamento tra domanda e offerta di energia e alla regolazione della sua distribuzione. Il corrispettivo di dispacciamento, espresso in centesimi di euro per kWh, è calcolato e aggiornato periodicamente da Terna, il gestore della rete di",
+  "raw_text_by_page": [
+    "INTERNAL\n\n\n\n\n    Segmento: Clientela Residenziale                                                                                                                          Enel Energia per il\n    Commodity: Ele                                                                                                                                            mercato libero\n\n\nDETTAGLIO DEI CORRISPETTIVI ALL’INTERNO DEL BOX OFFERTA E DEGLI ELEMENTI ESSENZIALI\n\nSPESA PER IL SERVIZIO DI     Quota Consumi\nVENDITA DELL’ENERGIA                  Prezzo della componente energia (comprensivo delle perdite di rete), espresso in €/kWh pari al \"PUN Index GME\" indice di riferimento del mercato\n                              A       elettrico italiano: è il prezzo di riferimento dell'energia elettrica scambiata sul mercato all'ingrosso dell'energia (MGP - Mercato del Giorno Prima),\n                                      calcolato dal GME, differenziato su fasce orarie.\n\n                                      Il corrispettivo di dispacciamento è una componente della bolletta elettrica che copre i costi sostenuti per garantire la sicurezza e la continuità del\n                              B       servizio elettrico. Questi costi sono legati alla gestione della rete elettrica, in particolare al bilanciamento tra domanda e offerta di energia e alla\n                                      regolazione della sua distribuzione. Il corrispettivo di dispacciamento, espresso in centesimi di euro per kWh, è calcolato e aggiornato\n                                      periodicamente da Terna, il gestore della rete di trasmissione nazionale.\n                                      Il corrispettivo a copertura dell’onere netto di approvvigionamento della capacità, espresso anch’esso in €/kWh, serve a garantire, come il\n                              C       corrispettivo di dispacciamento, la sicurezza del sistema e l'approvvigionamento di energia elettrica mediante la previsione di una remunerazione\n                                      accessoria per quei fornitori di capacità elettrica che si impegnano a mantenerla e a metterla a disposizione del sistema, in caso di necessità.\n                                      Una componente di sbilanciamento a copertura delle spese sostenute dal gestore della rete nazionale per compensare la differenza tra l'energia che\n                                      un produttore o un utente dichiara di immettere o prelevare dalla rete e quella che effettivamente immette o preleva. È pari al 2% dell'indice (PUN\n                               D      index GME) definito con periodicità mensile che corrisponde ai valori consuntivi medi aritmetici mensili del PUN index GME, espressi in €/kWh, così\n                                      come determinato dal Gestore dei Mercati Energetici (GME) e pubblicato sul sito internet del GME.\n\n                             Quota Fissa\n\n                                  E     Un corrispettivo fisso €/POD/mese relativo ai costi di commercializzazione e vendita (CCV) a copertura delle spese che i fornitori di energia (luce e\n                                        gas) sostengono per gestire i rapporti con i clienti e le attività di vendita.\n\n                                  F    La componente di dispacciamento (DISP BT) è un corrispettivo fisso, pari a €/POD/anno, come definita da ARERA ed indicata nell’Allegato A del\n                                       TIV, sarà aggiornata dalla stessa ARERA. Gli aggiornamenti della componente DispBT saranno comunicati in fattura.\n\n                             I valori di cui alle lettere B), C) e D) sopra riportati sono comprensivi delle perdite di rete (applicate come definite e aggiornate da ARERA) e gli aggiornamenti\n                             verranno comunicati in fattura. Le perdite di rete sono applicate come definite e aggiornate da ARERA e attualmente pari a 10% del consumo."
+  ],
+  "page_count": 1,
+  "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-casa/fasce.pdf",
+  "ocr_used_pages": [],
+  "validation": {
+    "total_consistency": "not_enough_data",
+    "delta": null
+  },
+  "provenance": {
+    "source_url": "https://www.enel.it/content/dam/asset/documenti/blog/guide/guida-alla-bolletta/bollette-luce-casa/fasce.pdf",
+    "filename": "enel__electricity__domestic__luce-casa-fasce.pdf",
+    "sha256": "ed78fc65a38da766194863b3f0de9cecc6d4f7462899e542df9d04b65db1c1a0",
+    "status": "downloaded",
+    "downloaded_at": "2026-04-22T11:27:13.251492+00:00",
+    "document_kind": "sample_bill",
+    "page_count": 1
+  }
+}
