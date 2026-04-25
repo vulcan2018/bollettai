@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function BoltIcon({ className }: { className?: string }) {
   return (
@@ -27,6 +27,13 @@ function ArrowRightIcon({ className }: { className?: string }) {
 }
 
 export default function Home() {
+  const [selectedService, setSelectedService] = useState("");
+
+  const handleServiceClick = (serviceValue: string) => {
+    setSelectedService(serviceValue);
+    document.getElementById("contatti")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <div className="min-h-screen bg-[#FAFAF8]">
       {/* Header */}
@@ -143,7 +150,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Audit */}
-            <div className="bg-white border border-[#E5E5E0] rounded-xl p-8 hover:border-[#0D6E6E]/30 transition-colors">
+            <div
+              onClick={() => handleServiceClick("audit")}
+              className="bg-white border border-[#E5E5E0] rounded-xl p-8 hover:border-[#0D6E6E]/30 transition-colors cursor-pointer"
+            >
               <div className="mb-6">
                 <span className="inline-block px-3 py-1 text-xs font-semibold text-[#0D6E6E] bg-[#0D6E6E]/10 rounded-full mb-4">
                   ONE-OFF
@@ -177,7 +187,10 @@ export default function Home() {
             </div>
 
             {/* Monitoraggio */}
-            <div className="bg-white border-2 border-[#0D6E6E] rounded-xl p-8 relative">
+            <div
+              onClick={() => handleServiceClick("monitoraggio")}
+              className="bg-white border-2 border-[#0D6E6E] rounded-xl p-8 relative cursor-pointer"
+            >
               <div className="absolute -top-3 left-6 px-3 py-1 text-xs font-semibold text-white bg-[#0D6E6E] rounded-full">
                 CONSIGLIATO
               </div>
@@ -214,7 +227,10 @@ export default function Home() {
             </div>
 
             {/* Consulenza */}
-            <div className="bg-white border border-[#E5E5E0] rounded-xl p-8 hover:border-[#0D6E6E]/30 transition-colors">
+            <div
+              onClick={() => handleServiceClick("consulenza")}
+              className="bg-white border border-[#E5E5E0] rounded-xl p-8 hover:border-[#0D6E6E]/30 transition-colors cursor-pointer"
+            >
               <div className="mb-6">
                 <span className="inline-block px-3 py-1 text-xs font-semibold text-[#6B7280] bg-[#6B7280]/10 rounded-full mb-4">
                   PROGETTO
@@ -438,7 +454,7 @@ export default function Home() {
             Analizziamo una bolletta gratuitamente per mostrarti cosa possiamo trovare. Senza impegno.
           </p>
 
-          <ContactForm />
+          <ContactForm selectedService={selectedService} />
         </div>
       </section>
 
@@ -470,7 +486,7 @@ export default function Home() {
   );
 }
 
-function ContactForm() {
+function ContactForm({ selectedService }: { selectedService: string }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -484,6 +500,12 @@ function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (selectedService) {
+      setFormData(prev => ({ ...prev, service: selectedService }));
+    }
+  }, [selectedService]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
