@@ -1,20 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9fafb;
-  --foreground: #111827;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --success: #059669;
-  --warning: #d97706;
-  --error: #dc2626;
+  --background: #FAFAF8;
+  --foreground: #1A1A1A;
+  --primary: #0D6E6E;
+  --primary-dark: #0A5555;
+  --accent: #C9A227;
+  --accent-light: #E5C45B;
+  --muted: #6B7280;
+  --border: #E5E5E0;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif), Georgia, serif;
 }
 
 button, [role="button"], a, select {
   cursor: pointer;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+html {
+  scroll-behavior: smooth;
 }

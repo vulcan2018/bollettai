@@ -14,6 +14,7 @@ export async function POST(request: NextRequest) {
     }
 
     const typeLabels: Record<string, string> = {
+      audit_request: 'Richiesta Audit Gratuito',
       general: 'Richiesta generale',
       legal: 'Consulenza legale',
       cer: 'Comunità Energetica (CER)',
