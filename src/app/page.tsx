@@ -116,6 +116,19 @@ export default function Home() {
             <p className="mt-6 text-[#6B7280]">
               In media, una PMI italiana overpaga l&apos;energia del <strong className="text-[#1A1A1A]">8-20%</strong> senza rendersene conto.
             </p>
+
+            {/* Case Study */}
+            <div className="mt-10 p-6 bg-[#0D6E6E]/5 border border-[#0D6E6E]/20 rounded-xl">
+              <p className="text-sm text-[#0D6E6E] font-semibold mb-2">ESEMPIO ILLUSTRATIVO</p>
+              <p className="text-[#1A1A1A] font-medium mb-3">
+                PMI manifatturiera in Lombardia — spesa energetica €7.200/mese
+              </p>
+              <p className="text-[#6B7280] text-base">
+                Identificati <strong className="text-[#1A1A1A]">€11.400/anno</strong> di risparmi:
+                €4.200 da errori di fatturazione su componenti regolate, €3.600 da codice ATECO errato
+                (agevolazioni accise non applicate), €3.600 dalla rinegoziazione del contratto a condizioni di mercato.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -293,19 +306,19 @@ export default function Home() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {[
-              { icon: "🏭", name: "Manifattura e lavorazioni meccaniche" },
-              { icon: "🏨", name: "Alberghiero e ristorazione" },
-              { icon: "🛒", name: "Commercio e retail (multi-sede)" },
-              { icon: "📦", name: "Logistica e magazzini" },
-              { icon: "🏢", name: "Studi professionali e co-working" },
-              { icon: "🌾", name: "Alimentare e agroindustriale" },
+              "Manifattura e lavorazioni meccaniche",
+              "Alberghiero e ristorazione",
+              "Commercio e retail (multi-sede)",
+              "Logistica e magazzini",
+              "Studi professionali e co-working",
+              "Alimentare e agroindustriale",
             ].map((sector) => (
               <div
-                key={sector.name}
-                className="bg-white border border-[#E5E5E0] rounded-lg p-5 text-center hover:border-[#0D6E6E]/30 transition-colors"
+                key={sector}
+                className="bg-white border border-[#E5E5E0] rounded-lg p-5 hover:border-[#0D6E6E]/30 transition-colors"
               >
-                <span className="text-2xl mb-2 block">{sector.icon}</span>
-                <span className="text-sm text-[#1A1A1A]">{sector.name}</span>
+                <div className="w-2 h-2 bg-[#0D6E6E] rounded-full mb-3" />
+                <span className="text-sm text-[#1A1A1A] font-medium">{sector}</span>
               </div>
             ))}
           </div>
@@ -377,8 +390,8 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="text-center md:text-left">
-              <div className="w-24 h-24 mx-auto md:mx-0 mb-6 bg-[#E5E5E0] rounded-xl flex items-center justify-center text-4xl">
-                👤
+              <div className="w-24 h-24 mx-auto md:mx-0 mb-6 bg-[#0D6E6E]/10 rounded-xl flex items-center justify-center">
+                <span className="text-2xl font-semibold text-[#0D6E6E]">LB</span>
               </div>
               <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">Lucio Berardi</h3>
               <p className="text-sm text-[#0D6E6E] font-medium mb-4">Esperto Energetico</p>
@@ -390,8 +403,8 @@ export default function Home() {
             </div>
 
             <div className="text-center md:text-left">
-              <div className="w-24 h-24 mx-auto md:mx-0 mb-6 bg-[#E5E5E0] rounded-xl flex items-center justify-center text-4xl">
-                🧠
+              <div className="w-24 h-24 mx-auto md:mx-0 mb-6 bg-[#0D6E6E]/10 rounded-xl flex items-center justify-center">
+                <span className="text-2xl font-semibold text-[#0D6E6E]">FS</span>
               </div>
               <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">Fira Software Ltd</h3>
               <p className="text-sm text-[#0D6E6E] font-medium mb-4">Partner Tecnologico</p>
@@ -406,6 +419,12 @@ export default function Home() {
           <p className="mt-12 text-center text-lg text-[#6B7280] italic">
             &ldquo;Tecnologia AI di livello scientifico, applicata all&apos;energia. Competenza di settore, al servizio delle PMI.&rdquo;
           </p>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-[#1A1A1A] font-medium">
+              Non siamo affiliati a nessun fornitore energetico. Il nostro unico cliente sei tu.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -456,6 +475,7 @@ function ContactForm() {
     name: "",
     email: "",
     company: "",
+    service: "",
     sector: "",
     spending: "",
     sites: "",
@@ -480,6 +500,7 @@ function ContactForm() {
           company: formData.company,
           type: "audit_request",
           message: `
+Servizio richiesto: ${formData.service || "Non specificato"}
 Settore: ${formData.sector || "Non specificato"}
 Spesa energetica mensile: ${formData.spending || "Non specificata"}
 Numero di siti: ${formData.sites || "Non specificato"}
@@ -494,7 +515,7 @@ ${formData.message || "Richiesta analisi gratuita prima bolletta"}
       }
 
       setSuccess(true);
-      setFormData({ name: "", email: "", company: "", sector: "", spending: "", sites: "", message: "" });
+      setFormData({ name: "", email: "", company: "", service: "", sector: "", spending: "", sites: "", message: "" });
     } catch (err) {
       setError(err instanceof Error ? err.message : "Errore sconosciuto");
     } finally {
@@ -557,6 +578,25 @@ ${formData.message || "Richiesta analisi gratuita prima bolletta"}
           onChange={(e) => setFormData({ ...formData, company: e.target.value })}
           className="w-full px-4 py-3 border border-[#E5E5E0] rounded-lg focus:ring-2 focus:ring-[#0D6E6E] focus:border-transparent transition-all bg-white"
         />
+      </div>
+
+      <div>
+        <label htmlFor="service" className="block text-sm font-medium text-[#1A1A1A] mb-1.5">
+          Servizio di interesse *
+        </label>
+        <select
+          id="service"
+          required
+          value={formData.service}
+          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+          className="w-full px-4 py-3 border border-[#E5E5E0] rounded-lg focus:ring-2 focus:ring-[#0D6E6E] focus:border-transparent transition-all bg-white cursor-pointer"
+        >
+          <option value="">Seleziona un servizio...</option>
+          <option value="audit">Audit Energetico (da €500, one-off)</option>
+          <option value="monitoraggio">Monitoraggio Continuo (da €200/mese)</option>
+          <option value="consulenza">Consulenza Strategica (da €2.000)</option>
+          <option value="gratuito">Solo analisi gratuita prima bolletta</option>
+        </select>
       </div>
 
       <div className="grid sm:grid-cols-3 gap-4">
