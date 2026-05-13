@@ -409,7 +409,7 @@ export default function Home() {
               <div className="w-24 h-24 mx-auto md:mx-0 mb-6 bg-[#0D6E6E]/10 rounded-xl flex items-center justify-center">
                 <span className="text-2xl font-semibold text-[#0D6E6E]">LB</span>
               </div>
-              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">Lucio Berardi</h3>
+              <h3 className="text-xl font-semibold text-[#1A1A1A] mb-2">Avv. Lucio Berardi</h3>
               <p className="text-sm text-[#0D6E6E] font-medium mb-4">Esperto Energetico</p>
               <p className="text-[#6B7280]">
                 Esperienza pluriennale nel settore energetico italiano. Conoscenza approfondita
@@ -469,7 +469,7 @@ export default function Home() {
               <span className="font-semibold text-lg">BollettAI</span>
             </div>
             <p className="text-sm text-white/60">
-              Fira Software Ltd × Lucio Berardi
+              Fira Software Ltd × Avv. Lucio Berardi
             </p>
           </div>
 
