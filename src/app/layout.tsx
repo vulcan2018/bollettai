@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 
@@ -37,6 +38,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="it" className={`${dmSans.variable} ${dmSerif.variable} ${jetbrainsMono.variable} h-full`}>
+      <head>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-XX91L55W54" strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-XX91L55W54');
+          `}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col font-sans">
         <AuthProvider>
           {children}
